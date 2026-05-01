@@ -6,14 +6,14 @@ on:
     types:
       - completed
 
-permissions:
-  contents: read, write
-  pull-requests: read
 
 jobs:
   run_harness:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: self-hosted
+    permissions:
+      contents: read
+      pull-requests: read
     outputs:
         results: ${{ steps.run_harness.outputs.results }}
 
@@ -36,10 +36,13 @@ jobs:
   update_journal:
     needs: evalute
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        ref: main
+        with:
+          ref: main
 
       - name: Set up Python 3.14
         uses: actions/setup-python@v6
