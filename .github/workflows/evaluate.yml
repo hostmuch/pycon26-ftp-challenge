@@ -96,11 +96,7 @@ jobs:
         run: |
           set -e
           echo "${{ needs.run_harness.outputs.results }}" > ${{ runner.temp }}/results.txt
-<<<<<<< Updated upstream
-          python scores/format_journal_entry.py ${{ github.event.pull_request.user.login }} ${{ github.event.pull_request.html_url }} ${{ github.event.pull_request.user.number }} ${{ runner.temp }}/results.txt >> scores/journal.txt
-=======
           python scores/format_journal_entry.py ${{ github.event.pull_request.user.login }} ${{ github.event.pull_request.html_url }} ${{ github.event.pull_request.number }} ${{ runner.temp }}/results.txt >> scores/journal.txt
->>>>>>> Stashed changes
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add scores/journal.txt
