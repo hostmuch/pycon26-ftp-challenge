@@ -263,3 +263,7 @@ class ValidationResultTest(unittest.TestCase):
     def test_passed_false_when_errors(self) -> None:
         result = ValidationResult(passed=False, errors=["some error"])
         self.assertFalse(result.passed)
+
+
+if __name__ == "__main__":
+    unittest.main()

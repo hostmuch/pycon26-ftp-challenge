@@ -144,3 +144,7 @@ class BuildGraphValidationTest(unittest.TestCase):
             )
             graph = BuildGraph.load(f.name)
             self.assertEqual(len(graph), 2)
+
+
+if __name__ == "__main__":
+    unittest.main()

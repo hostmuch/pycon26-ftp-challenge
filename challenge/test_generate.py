@@ -123,3 +123,7 @@ class GenerateRealisticTest(unittest.TestCase):
         self.assertEqual(len(g1), len(g2))
         for name in g1.targets:
             self.assertEqual(g1.targets[name], g2.targets[name])
+
+
+if __name__ == "__main__":
+    unittest.main()

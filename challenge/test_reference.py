@@ -127,3 +127,7 @@ class BuildAllTest(unittest.TestCase):
         graph = _make_diamond_graph()
         results = build_all(graph)
         self.assertEqual(set(results.keys()), set(graph.targets.keys()))
+
+
+if __name__ == "__main__":
+    unittest.main()
