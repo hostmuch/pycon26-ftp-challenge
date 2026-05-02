@@ -109,7 +109,7 @@ jobs:
     needs: run_harness
     runs-on: ubuntu-latest
     permissions:
-      pull-request: write
+      pull-requests: write
     steps:
       - name: Fetch results
         id: fetch_results
