@@ -48,11 +48,18 @@ jobs:
           env | grep -iE "malloc|alloc|ld_preload" || echo "<none>"
           echo "=== Full env diff (service vs login) ==="
           env | sort
-
-      - name: First run with perf counters
+      - name: Check what's running before first harness
         run: |
-          sudo perf stat -d -d uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs/diamond.json 2>&1
+          ps aux --sort=-%cpu | head -20
 
-      - name: Second run with perf counters
+      - name: First harness run
         run: |
-          sudo perf stat -d -d uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs/diamond.json 2>&1
+          uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs/diamond.json
+
+      - name: Check what's running before second harness
+        run: |
+          ps aux --sort=-%cpu | head -20
+
+      - name: Second harness run
+        run: |
+          uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs/diamond.json
