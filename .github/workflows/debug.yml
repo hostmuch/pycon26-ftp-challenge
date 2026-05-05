@@ -56,3 +56,14 @@ jobs:
           set -o errexit
           set -o pipefail
           /usr/bin/time -v uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs 2>&1
+
+      - name: Run harness bypassing uv wrapper
+        run: |
+          PYPATH=$(uv run --python 3.14.3t python -c "import sys; print(sys.executable)")
+          echo "Using: $PYPATH"
+          PYTHONPATH=challenge $PYPATH challenge/harness.py submissions/example.py graphs
+
+      - name: Profile syscalls on single graph
+        run: |
+          PYPATH=$(uv run --python 3.14.3t python -c "import sys; print(sys.executable)")
+          strace -c -f -e trace=futex PYTHONPATH=challenge $PYPATH challenge/harness.py submissions/example.py graphs/diamond.json 2>&1 | tail -20
