@@ -49,28 +49,18 @@ jobs:
           echo "=== Full env diff (service vs login) ==="
           env | sort
 
-      - name: Run Harness
-        run: |
-          uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs
-
-      - name: Run Harness
-        id: run_harness
-        run: |
-          uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs
-
       - name: Run harness bypassing uv wrapper
         run: |
           PYPATH=$(uv run --python 3.14.3t python -c "import sys; print(sys.executable)")
           echo "Using: $PYPATH"
           PYTHONPATH=challenge $PYPATH challenge/harness.py submissions/example.py graphs
 
-      - name: Test uv with all graphs
+      - name: Run Harness
         run: |
           uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs
 
-      - name: Test each graph individually via uv
+      - name: Run Harness
+        id: run_harness
+        timeout-minutes: 10
         run: |
-          for g in graphs/*.json; do
-            echo "=== $(basename $g) ==="
-            uv run --python 3.14.3t challenge/harness.py submissions/example.py "$g"
-          done
+          uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs
