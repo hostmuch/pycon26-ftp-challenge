@@ -53,8 +53,6 @@ jobs:
         id: run_harness
         timeout-minutes: 10
         run: |
-          set -o errexit
-          set -o pipefail
           /usr/bin/time -v uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs 2>&1
 
       - name: Run harness bypassing uv wrapper
