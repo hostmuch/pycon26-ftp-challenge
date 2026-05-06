@@ -53,6 +53,7 @@ jobs:
 
       - name: Two runs same step
         run: |
+          uv run --python 3.14.3t python -m compileall challenge/ submissions/
           echo "=== First run ==="
           uv run --python 3.14.3t challenge/harness.py submissions/example.py graphs/diamond.json
           echo ""
