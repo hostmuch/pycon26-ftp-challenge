@@ -33,8 +33,10 @@ Valid solutions will be shared on the leaderboard [here](https://mpage.github.io
 
 ## Rules
 
-1.This challenge will run from Friday, May 15, 8:00am to Saturday, May 16, 4:00pm PST. The top 25 finishers at the end of each conference day win swag!
-   Swing by the Meta booth at 5:45pm Friday and 4:00pm Saturday to pick up your swag and have the opportunity to demo your solution if you wish.
+1. This challenge will run from Friday, May 15, 8:00am to Saturday, May 16,
+   4:00pm PST. The top 25 finishers at the end of each conference day win swag!
+   Swing by the Meta booth at 5:45pm Friday and 4:00pm Saturday to pick up your
+   swag and have the opportunity to demo your solution if you wish.
 2. You can enter as many submissions as you like; only your highest score will
    count towards the leaderboard.
 3. One prize per contestant.
