@@ -178,6 +178,8 @@ jobs:
               lines.push("", `**Error:** ${score.error}`);
             }
 
+            lines.push("", "---", "[View the leaderboard](https://mpage.github.io/pycon26-ftp-challenge/leaderboard/)");
+
             const body = lines.join("\n");
             const issue_number = context.issue.number;
 
